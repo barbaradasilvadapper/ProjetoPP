@@ -17,6 +17,7 @@ import {
     TableContainer,
   } from '@chakra-ui/react'
 import Menu from "../../components/Menu/Menu"
+import { Link } from "react-router-dom"
 
 function MyInfo(){
     const GradientTitle = ({ text }) => {
@@ -26,6 +27,7 @@ function MyInfo(){
     return(
         <>
             <Seta>
+            <Link to="/Home">
             <IconButton
             variant='outlined'
             colorScheme='teal'
@@ -34,6 +36,7 @@ function MyInfo(){
             size='lg'
             icon={<ArrowBackIcon />}
             />
+            </Link>
             </Seta>
             <GradientTitle text="Minhas Informações"/>
 

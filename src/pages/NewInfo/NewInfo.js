@@ -5,6 +5,7 @@ import { Text } from '@chakra-ui/react'
 import { Card, CardHeader, CardBody, CardFooter, SimpleGrid, Heading } from '@chakra-ui/react'
 import { Button } from '@chakra-ui/react'
 import Menu from "../../components/Menu/Menu"
+import { Link } from "react-router-dom"
 
 function NewInfo(){
     const GradientTitle = ({ text }) => {
@@ -14,6 +15,7 @@ function NewInfo(){
     return(
         <>
             <Seta>
+            <Link to="/Home">
             <IconButton
             variant='outlined'
             colorScheme='teal'
@@ -22,6 +24,7 @@ function NewInfo(){
             size='lg'
             icon={<ArrowBackIcon />}
             />
+            </Link>
             </Seta>
 
             <GradientTitle text="Nova Informação"/>
@@ -33,7 +36,9 @@ function NewInfo(){
                 <Heading size='sm' fontSize='17px'> Abasteceu seu carro? </Heading>
                 </CardHeader>
                 <CardFooter >
+                <Link to="/NovoAbastecimento">
                 <Button size='md' fontSize='14px' mt='-3' >Adicionar Informação</Button>
+                </Link>
                 </CardFooter>
             </Card>
             <Card align='center'>
@@ -41,7 +46,9 @@ function NewInfo(){
                 <Heading size='sm' fontSize='17px'> Compensou emissões? </Heading>
                 </CardHeader>
                 <CardFooter>
+                <Link to="/NovaCompensacao">
                 <Button size='md' fontSize='14px' mt='-3'>Adicionar Informação</Button>
+                </Link>
                 </CardFooter>
             </Card>
             </SimpleGrid>

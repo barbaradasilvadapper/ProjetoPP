@@ -7,11 +7,13 @@ import { Button } from '@chakra-ui/react'
 import { Divider } from '@chakra-ui/react'
 import { Radio, RadioGroup, Stack } from '@chakra-ui/react'
 import { Text } from '@chakra-ui/react'
+import { Link } from "react-router-dom"
 
 function CalcularMes(){
 
     return(
         <>
+            <Link to="/Home">
             <IconButton
             variant='outlined'
             colorScheme='teal'
@@ -20,6 +22,7 @@ function CalcularMes(){
             size='lg'
             icon={<ArrowBackIcon />}
             />
+            </Link>
 
         <Titulo justifyContent='space-between' align='center'>
             <Text fontSize='17px' as='b'> Selecione o mês</Text>
@@ -96,7 +99,9 @@ function CalcularMes(){
                 </DateContainer>
 
                 <SubmitButton>
+                <Link to="/Resultado">
                 <Button  type="submit" width='40%' size='sm' fontSize='16px' colorScheme='green'>Calcular</Button>
+                </Link>
                 </SubmitButton>
             </form>
             </Container>

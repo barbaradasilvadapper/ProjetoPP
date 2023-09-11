@@ -12,6 +12,7 @@ import { Button } from '@chakra-ui/react'
 import { Text } from '@chakra-ui/react'
 
 import { BsFillPersonFill } from "react-icons/bs";
+import { Link } from "react-router-dom"
 
 
 function CardCadastro(){
@@ -70,12 +71,16 @@ function CardCadastro(){
             </StyleInput>
 
             <BotaoEntrar>
+            <Link to="/Home">
                 <Button  marginLeft='25%' width='50%' size='md' fontSize='15px' colorScheme='green'>Sign Up</Button>
+            </Link>
             </BotaoEntrar>
 
             <SignUp>
             <Text marginLeft='7%' fontSize='13px' colorScheme='gray'>Already have an account? 
+            <Link to="/">
             <Button marginLeft='2%' fontSize='13px' colorScheme='blue' variant='link'>  Sign In</Button>
+            </Link>
             </Text> 
             </SignUp>
 

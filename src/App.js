@@ -11,6 +11,9 @@ import NovoCarro from './pages/NovoCarro/NovoCarro';
 import NewInfo from './pages/NewInfo/NewInfo';
 import MyInfo from './pages/MyInfo/MyInfo';
 import CalcularMes from './pages/CalcularMes/CalcularMes';
+import Compensacao from './pages/Compensacao/Compensacao';
+import Resultado from './pages/Resultado/Resultado';
+import Rotas from './routes/Routes';
 
 
 
@@ -18,7 +21,7 @@ function App() {
   return (
     <>
     <ChakraProvider>
-      <CalcularMes/>
+      <Rotas/>
     </ChakraProvider>
     </>
   );

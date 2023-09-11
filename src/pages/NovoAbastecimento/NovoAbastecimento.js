@@ -15,20 +15,23 @@ import {
 
 import { Card, CardHeader, CardBody, CardFooter, Heading, StackDivider, Stack, Box } from '@chakra-ui/react'
 import Menu from "../../components/Menu/Menu"
+import { Link } from "react-router-dom"
 
 function NovoAbastecimento(){
     return(
         <>
             <Fundo>
             <Seta>
+            <Link to="/Home">
             <IconButton
             variant='outlined'
             colorScheme='teal'
             aria-label='Call Segun'
-            color="white"
+            color="green"
             size='lg'
             icon={<ArrowBackIcon />}
             />
+            </Link>
             </Seta>
             <Titulo>
             <Text color='white' fontSize='20px' as='b'> Novo Abastecimento</Text>
@@ -77,7 +80,9 @@ function NovoAbastecimento(){
             </CardBody>
             </Card>
             <BotaoSalvar>
+            <Link to="/MyInfo">
                 <Button  marginLeft='55%' width='40%' size='sm' fontSize='15px' colorScheme='green'>Salvar</Button>
+            </Link>
             </BotaoSalvar>
             </Container>
 

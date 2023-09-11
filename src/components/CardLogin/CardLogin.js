@@ -1,18 +1,49 @@
 
 import { BotaoEntrar, Container, SignUp, StyleInput, Titulo} from "./styled"
 
-import {
-    InputGroup,
-    InputLeftElement
-  } from '@chakra-ui/react'
+import { InputGroup, InputLeftElement} from '@chakra-ui/react'
 
 import { Input } from '@chakra-ui/react'
 import { EmailIcon, LockIcon } from '@chakra-ui/icons'
 import { Button } from '@chakra-ui/react'
 import { Text } from '@chakra-ui/react'
+import { Link } from "react-router-dom"
+
+import { useState } from "react"
+import axios from "axios"
+import { useNavigate } from "react-router-dom"
 
 
 function CardLogin(){
+
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+
+    const navigate = useNavigate()
+
+    const saveUserInfoLocalStorage = (token) => {
+        localStorage.setItem('token', token)
+        localStorage.setItem('email', email)
+    }
+
+    const handleSubmit = (e)=>{
+        e.preventDefault()
+
+        const credentials = {email, password}
+      
+          axios.post('http://localhost:8000/login', credentials, {
+              headers:{
+                  'Content-Type': 'application/json'
+              }
+          })
+          .then(response => {
+              alert(response.data.message)
+              saveUserInfoLocalStorage(response.data.token)
+              navigate("/Home")
+          })
+          .catch(error => console.log(error))
+      }
+
     return(
         <>
 
@@ -22,12 +53,14 @@ function CardLogin(){
             <Text fontSize='17px' as='b'> WELCOME BACK!</Text>
             </Titulo>
 
+        <form onSubmit={handleSubmit}>
             <StyleInput>
             <InputGroup>
             <InputLeftElement pointerEvents='none'>
             <EmailIcon />
             </InputLeftElement>
-            <Input type='email' size='md' variant='filled' fontSize='15px' placeholder='Email or Username' />
+            <Input size='md' variant='filled' fontSize='15px' placeholder='Email or Username' 
+            type="email" value={email} onChange={(e) => setEmail(e.target.value)}/>
             </InputGroup>
             </StyleInput>
 
@@ -36,19 +69,27 @@ function CardLogin(){
             <InputLeftElement pointerEvents='none'>
             <LockIcon/>
             </InputLeftElement>
-            <Input type='email' size='md' variant='filled' fontSize='15px' placeholder='Password' />
+            <Input size='md' variant='filled' fontSize='15px' placeholder='Password' 
+            type="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
             </InputGroup>
             </StyleInput>
 
+            <Link to="/NewPassword">
             <Button marginTop='5%' fontSize='10px' colorScheme='gray' variant='link'>Forgot your password?</Button>
+            </Link>
 
             <BotaoEntrar>
-                <Button  marginLeft='25%' width='50%' size='md' fontSize='15px' colorScheme='green'>Login</Button>
+                <Button  marginLeft='25%' width='50%' size='md' fontSize='15px' colorScheme='green' type='submit'>Login</Button>
             </BotaoEntrar>
+        </form>
 
             <SignUp>
             <Text marginLeft='9%' fontSize='13px' colorScheme='gray'>Don't have an account? 
-            <Button marginLeft='2%' fontSize='13px' colorScheme='blue' variant='link'>  Sign Up</Button>
+            <Link to="/Cadastro">
+            <Button marginLeft='2%' fontSize='13px' colorScheme='blue' variant='link'> 
+            Sign Up
+            </Button>
+            </Link> 
             </Text> 
             </SignUp>
 

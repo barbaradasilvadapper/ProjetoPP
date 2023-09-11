@@ -6,26 +6,24 @@ import Estatistica from "../../components/Estatisticas/Estatisticas"
 import BotaoRedondo from "../../components/BotaoRedondo/BotaoRedondo"
 import { Link } from "react-router-dom"
 
-
-function Home(){
-  
+function Resultado(){
     return(
         <>
     <HomePageContainer>
         <HomeInfo
-        TextoNormal= 'Bem-vindo'
-        TextoNegrito= 'Nome de usuário'
-        NomeCarro= 'Nome do Carro'
-        TextoFinal="connected"
+        TextoNormal= 'Nome de usuário'
+        TextoNegrito= 'Mês Selecionado'
+        TextoAcima='Esse mês você emitiu'
+        NomeCarro= '200kg'
+        TextoFinal="de gás carbônico"
         />
-        
-    <Link to="/NewInfo">
+    <Link to="/Compensacao">
       <BotaoRedondo justifyContent='space-between' align='center'
-        TextoBotao= 'Nova Informação'
+        TextoBotao= 'A Compensação'
       />
     </Link>
       <Estatistica
-      NEmitido='300kg'
+      NEmitido='500kg'
       NCompensado='100kg'
       />
       <Menu></Menu>
@@ -35,4 +33,4 @@ function Home(){
 }
 
 
-export default Home
+export default Resultado

@@ -6,7 +6,6 @@ export const Fundo = styled.div`
     background: linear-gradient(-45deg, #459896, #87C43C);
     background-repeat: no-repeat;
     border-radius: 30px 30px 30px 30px;
-    border-radius: 28.576px 28.576px 0px 0px;
     position:fixed;
     display: flex;
     flex-direction: row;
@@ -21,4 +20,12 @@ export const IconSize = styled.img`
     width: 3.5vh;
     height: 3.5;
     margin-top: 1vh;
+`
+
+export const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: right;
+  margin-top: 5%;
+  margin-bottom: 5%;
 `

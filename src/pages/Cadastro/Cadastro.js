@@ -4,6 +4,7 @@ import { Fundo, ImagemCard, } from "./styled"
 import LogoCinza from "../../assets/logocinza.png"
 
 
+
 function Cadastro(){
     return(
         <>
