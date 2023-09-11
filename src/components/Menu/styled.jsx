@@ -20,6 +20,13 @@ export const IconSize = styled.img`
     width: 3.5vh;
     height: 3.5;
     margin-top: 1vh;
+    background-color: transparent;
+    transition: background-color 0.3 ease;
+    &:hover {
+      background: rgba(255, 255, 255, 0.3); 
+      border-radius: 50%;
+      transform: scale(1.1)
+  }
 `
 
 export const Container = styled.div`
@@ -29,3 +36,4 @@ export const Container = styled.div`
   margin-top: 5%;
   margin-bottom: 5%;
 `
+

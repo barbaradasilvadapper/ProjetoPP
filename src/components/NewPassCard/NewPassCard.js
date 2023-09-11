@@ -21,7 +21,7 @@ function CardCadastro(){
         <Container>
 
             <Titulo>
-            <Text fontSize='17px' as='b'> NEW PASSWORD</Text>
+            <Text fontSize='17px' as='b'> REDEFINIR SENHA</Text>
             </Titulo>
 
             <StyleInput>
@@ -29,7 +29,7 @@ function CardCadastro(){
             <InputLeftElement pointerEvents='none'>
             <BsFillPersonFill/>
             </InputLeftElement>
-            <Input type='username' size='md' variant='filled' fontSize='15px' placeholder='Username' />
+            <Input type='username' size='md' variant='filled' fontSize='15px' placeholder='Nome de Usuário' />
             </InputGroup>
             </StyleInput>
 
@@ -47,7 +47,7 @@ function CardCadastro(){
             <InputLeftElement pointerEvents='none'>
             <PhoneIcon/>
             </InputLeftElement>
-            <Input type='phone' size='md' variant='filled' fontSize='15px' placeholder='Phone Number' />
+            <Input type='phone' size='md' variant='filled' fontSize='15px' placeholder='Número de Telefone' />
             </InputGroup>
             </StyleInput>
 
@@ -56,7 +56,7 @@ function CardCadastro(){
             <InputLeftElement pointerEvents='none'>
             <LockIcon/>
             </InputLeftElement>
-            <Input type='password' size='md' variant='filled' fontSize='15px' placeholder='Password' />
+            <Input type='password' size='md' variant='filled' fontSize='15px' placeholder='Nova Senha' />
             </InputGroup>
             </StyleInput>
 
@@ -65,20 +65,20 @@ function CardCadastro(){
             <InputLeftElement pointerEvents='none'>
             <LockIcon/>
             </InputLeftElement>
-            <Input type='password' size='md' variant='filled' fontSize='15px' placeholder='Confirm Password' />
+            <Input type='password' size='md' variant='filled' fontSize='15px' placeholder='Confirmar Senha' />
             </InputGroup>
             </StyleInput>
 
             <BotaoEntrar>
             <Link to="/">
-                <Button  marginLeft='25%' width='50%' size='md' fontSize='15px' colorScheme='green'>Update</Button>
+                <Button  marginLeft='25%' width='50%' size='md' fontSize='15px' colorScheme='green'>Salvar</Button>
             </Link>
             </BotaoEntrar>
 
             <SignUp>
-            <Text marginLeft='5%' fontSize='13px' colorScheme='gray'>Remember your password? 
+            <Text marginLeft='15%' fontSize='13px' colorScheme='gray'>Lembra sua senha? 
             <Link to="/">
-            <Button marginLeft='2%' fontSize='13px' colorScheme='blue' variant='link'>  Sign In</Button>
+            <Button marginLeft='2%' fontSize='13px' colorScheme='blue' variant='link'>  Login</Button>
             </Link>
             </Text> 
             </SignUp>

@@ -50,7 +50,7 @@ function CardLogin(){
         <Container>
 
             <Titulo>
-            <Text fontSize='17px' as='b'> WELCOME BACK!</Text>
+            <Text fontSize='17px' as='b' justifyContent='center' alignText='center'> BEM-VINDO DE VOLTA!</Text>
             </Titulo>
 
         <form onSubmit={handleSubmit}>
@@ -59,7 +59,7 @@ function CardLogin(){
             <InputLeftElement pointerEvents='none'>
             <EmailIcon />
             </InputLeftElement>
-            <Input size='md' variant='filled' fontSize='15px' placeholder='Email or Username' 
+            <Input size='md' variant='filled' fontSize='15px' placeholder='Email ou Nome de Usuário' 
             type="email" value={email} onChange={(e) => setEmail(e.target.value)}/>
             </InputGroup>
             </StyleInput>
@@ -69,13 +69,13 @@ function CardLogin(){
             <InputLeftElement pointerEvents='none'>
             <LockIcon/>
             </InputLeftElement>
-            <Input size='md' variant='filled' fontSize='15px' placeholder='Password' 
+            <Input size='md' variant='filled' fontSize='15px' placeholder='Senha' 
             type="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
             </InputGroup>
             </StyleInput>
 
             <Link to="/NewPassword">
-            <Button marginTop='5%' fontSize='10px' colorScheme='gray' variant='link'>Forgot your password?</Button>
+            <Button marginTop='5%' fontSize='10px' colorScheme='gray' variant='link'>Esqueceu sua senha?</Button>
             </Link>
 
             <BotaoEntrar>
@@ -84,10 +84,10 @@ function CardLogin(){
         </form>
 
             <SignUp>
-            <Text marginLeft='9%' fontSize='13px' colorScheme='gray'>Don't have an account? 
+            <Text marginLeft='9%' fontSize='13px' colorScheme='gray'>Não possui conta? 
             <Link to="/Cadastro">
             <Button marginLeft='2%' fontSize='13px' colorScheme='blue' variant='link'> 
-            Sign Up
+            Cadastre-se
             </Button>
             </Link> 
             </Text> 

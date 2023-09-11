@@ -8,7 +8,7 @@ import { Link } from "react-router-dom"
 
 
 function Home(){
-  
+
     return(
         <>
     <HomePageContainer>
@@ -16,7 +16,7 @@ function Home(){
         TextoNormal= 'Bem-vindo'
         TextoNegrito= 'Nome de usuário'
         NomeCarro= 'Nome do Carro'
-        TextoFinal="connected"
+        TextoFinal="connectado"
         />
         
     <Link to="/NewInfo">

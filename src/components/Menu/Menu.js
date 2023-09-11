@@ -44,7 +44,7 @@ function Menu() {
   return (
     <>
         <Fundo>
-        <Tabs variant='soft-rounded' size='sm' colorScheme='blackAlpha' marginTop='0.6vh' align='center'>
+        <Tabs size='sm' colorScheme='blackAlpha' marginTop='0.6vh' align='center'>
           <TabList w='90vw' justifyContent='space-between' align='center'>
           <Link to="/Home"><Tab><IconSize src={HomeIcon}/></Tab></Link>
           <Link to="/NewInfo"><Tab><IconSize src={AddIcon}/></Tab></Link>

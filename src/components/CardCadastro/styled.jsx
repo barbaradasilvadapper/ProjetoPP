@@ -53,7 +53,7 @@ export const SignUp = styled.div`
 export const Titulo = styled.div`
     align-items: center;
     color: #101820;
-    margin-left: 33%;
+    margin-left: 22%;
     margin-top: 5%;
     margin-bottom: 10%;
 `
