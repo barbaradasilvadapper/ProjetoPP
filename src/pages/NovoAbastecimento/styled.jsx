@@ -46,7 +46,8 @@ export const Container = styled.div`
 
 export const ContainerHeader = styled.div`
     margin-top: 8%;
-    margin-left: 8%;
+    display: flex;
+    flex-direction: column;
     margin-bottom: 4%;
 `
 
