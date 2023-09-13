@@ -22,7 +22,7 @@ function CardCadastro(){
         <Container>
 
             <Titulo>
-            <Text fontSize='17px' as='b'> CADASTRE-SE!</Text>
+            <Text fontSize='17px' as='b' justifyContent='space-between' align='center'> CADASTRE-SE!</Text>
             </Titulo>
 
             <StyleInput>

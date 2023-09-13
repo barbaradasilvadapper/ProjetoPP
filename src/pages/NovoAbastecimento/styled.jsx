@@ -17,7 +17,8 @@ export const Titulo = styled.div`
     align-items: center;
     justify-content: center;
     color: #101820;
-    margin-left: 17%;
+    display: flex;
+    flex-direction: column;
     margin-top: 7%;
 `
 

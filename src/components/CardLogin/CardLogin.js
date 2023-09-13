@@ -50,7 +50,7 @@ function CardLogin(){
         <Container>
 
             <Titulo>
-            <Text fontSize='17px' as='b' justifyContent='center' alignText='center'> BEM-VINDO DE VOLTA!</Text>
+            <Text fontSize='17px' as='b' justifyContent='space-between' alignText='center'> BEM-VINDO DE VOLTA!</Text>
             </Titulo>
 
         <form onSubmit={handleSubmit}>
