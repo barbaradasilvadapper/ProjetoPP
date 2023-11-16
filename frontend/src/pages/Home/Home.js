@@ -18,6 +18,7 @@ function Home() {
     id: id
   }
   const [user, setUser] = useState()
+  const [car, setCar] = useState()
 
 
   useEffect(() => {
@@ -30,6 +31,18 @@ function Home() {
       });
   })
 
+  
+  useEffect(() => {
+    console.log(formData)
+    axios.post(`${baseUrl}/findCar/findCar`, formData)
+      .then(function (response) {
+        setCar(response.data.data)
+      })
+      .catch(function (error) {
+        console.log(error)
+      });
+  }, [])
+
   return (
     <>
       {user ? (
@@ -37,7 +50,7 @@ function Home() {
           <HomeInfo
             TextoNormal='Bem-vindo'
             TextoNegrito={user.nome}
-            NomeCarro='Nome do Carro'
+            NomeCarro={car.placa}
             TextoFinal="connectado"
           />
 

@@ -7,6 +7,7 @@ const cors = require('cors');
 const userRouter = require('./routes/userRouter');
 const loginRouter = require('./routes/loginRouter');
 const findUserRouter = require('./routes/findUserRouter');
+const findCarRouter = require('./routes/findCarRouter');
 const carRouter = require('./routes/carRouter');
 const abastecimentosRouter = require('./routes/abastecimentosRouter');
 const compensacaoRouter = require('./routes/compensacaoRouter');
@@ -24,6 +25,7 @@ app.use(cors())
 app.use('/api', userRouter);
 app.use('/api/auth', loginRouter);
 app.use('/api/find', findUserRouter);
+app.use('/api/findCar', findCarRouter);
 app.use('/api/car', carRouter);
 app.use('/api/abastecimentos', abastecimentosRouter);
 app.use('/api/compensacao', compensacaoRouter);

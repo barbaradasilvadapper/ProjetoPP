@@ -136,8 +136,6 @@ function NovoCarro(){
             </Container>
             </form>
 
-            
-            <Menu barra="3"/>
         </>
     )
 }
