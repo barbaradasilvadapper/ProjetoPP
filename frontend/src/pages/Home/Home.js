@@ -19,6 +19,8 @@ function Home() {
   }
   const [user, setUser] = useState()
   const [car, setCar] = useState()
+  const [emissoes, setEmissoes] = useState()
+  const [compensacoes, setCompensacoes] = useState()
 
 
   useEffect(() => {
@@ -31,7 +33,7 @@ function Home() {
       });
   })
 
-  
+
   useEffect(() => {
     console.log(formData)
     axios.post(`${baseUrl}/findCar/findCar`, formData)
@@ -43,9 +45,29 @@ function Home() {
       });
   }, [])
 
+  useEffect(() => {
+    axios.post(`${baseUrl}/somaA/somaAbastecimentos`, formData)
+      .then(function (response) {
+        setEmissoes(response.data.data);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }, []);
+
+  useEffect(() => {
+    axios.post(`${baseUrl}/somaC/somaCompensacoes`, formData)
+      .then(function (response) {
+        setCompensacoes(response.data.data);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }, []);
+
   return (
     <>
-      {user ? (
+      {user && car  && emissoes && compensacoes ? (
         <HomePageContainer>
           <HomeInfo
             TextoNormal='Bem-vindo'
@@ -60,8 +82,8 @@ function Home() {
             />
           </Link>
           <Estatistica
-            NEmitido='300kg'
-            NCompensado='100kg'
+            NEmitido= {emissoes}
+            NCompensado={compensacoes}
           />
           <Menu barra="0" />
         </HomePageContainer>

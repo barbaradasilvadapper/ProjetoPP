@@ -11,6 +11,9 @@ const findCarRouter = require('./routes/findCarRouter');
 const carRouter = require('./routes/carRouter');
 const abastecimentosRouter = require('./routes/abastecimentosRouter');
 const compensacaoRouter = require('./routes/compensacaoRouter');
+const contaRouter = require('./routes/contaRouter');
+const somaAbastecimentosRouter = require('./routes/somaAbastecimentosRouter');
+const somaCompensacoesRouter = require('./routes/somaCompensacoesRouter');
 // Importar o pacote dotenv, gerenciador de variáveis de ambiente
 const dotenv = require('dotenv').config();
 
@@ -29,6 +32,9 @@ app.use('/api/findCar', findCarRouter);
 app.use('/api/car', carRouter);
 app.use('/api/abastecimentos', abastecimentosRouter);
 app.use('/api/compensacao', compensacaoRouter);
+app.use('/api/conta', contaRouter);
+app.use('/api/somaA', somaAbastecimentosRouter);
+app.use('/api/somaC', somaCompensacoesRouter);
 // Setar a porta do servidor, a parir do arquivo .env
 app.set('port', process.env.PORT || 3333);
 

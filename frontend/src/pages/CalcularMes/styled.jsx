@@ -1,16 +1,19 @@
 import styled from "styled-components"
 
+export const MenuStyle = styled.div`
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  margin-left: 12%;
-
+  width: 100vw;
   align-items: right;
 `
 
-export const Question = styled.h2`
-  margin: 20px 0;
-`
+
 
 export const OptionList = styled.div`
   display: flex;
@@ -25,6 +28,7 @@ export const Option = styled.label`
   align-items: right;
   margin-bottom: 5%;
   margin-top: 5%;
+  padding: 13px;
   cursor: pointer;
   input[type="radio"] {
     align-item: center;
@@ -36,12 +40,11 @@ export const Option = styled.label`
 `
 
 export const SubmitButton = styled.button`
-    margin-top: 1rem;
+
     padding: 0.4rem;
     width: 100%;
     border-radius: 4px;
     margin-top: 6%;
-    margin-left: 28%
 `
 
 export const DateContainer = styled.div`
@@ -68,7 +71,7 @@ export const DateContainer = styled.div`
     &::-webkit-scrollbar-thumb {
       border-radius: 20px;
       background-color: #71806B;
-    }
+    };
 `
 
 export const Titulo = styled.div`
