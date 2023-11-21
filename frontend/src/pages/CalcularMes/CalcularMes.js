@@ -30,9 +30,13 @@ function CalcularMes() {
         const response = await axios.post(`${baseUrl}/conta/contaEmissoes`, formData);
 
         if (response.data.success) {
-            alert('Conta realizada com sucesso')
+            const totalEmitido = response.data.data; // Obtém o total emitido do response.data
+
+            alert('Conta realizada com sucesso');
+            localStorage.setItem('totalEmitido', totalEmitido); // Salva o totalEmitido no localStorage
+
             localStorage.setItem('selectedMonth', formData.mes); // Salvar o mês no localStorage
-            localStorage.setItem('calculationResult', JSON.stringify(response.data.data)); // Salvar o resultado da conta
+
             navigate('/Resultado');
         } else {
             alert('Não foi possível realizar a conta');

@@ -11,14 +11,14 @@ function HomeInfo(props){
     return(
         <>
         <ContainerInfo>
-            <Text fontSize='17px'>{props.TextoNormal}</Text>
-            <Text fontSize='20px' as='b'>{props.TextoNegrito}</Text>
+            <Text fontSize='20px'>{props.TextoNormal}</Text>
+            <Text fontSize='22px' as='b'>{props.TextoNegrito}</Text>
         </ContainerInfo>
 
         <ContainerCarro>
-        <Text fontSize='15px' as='b'>{props.TextoAcima}</Text>
+        <Text fontSize='18px' as='b'>{props.TextoAcima}</Text>
         <GradientTitle text={props.NomeCarro}/>
-        <Text fontSize='15px' as='b'>{props.TextoFinal}</Text>
+        <Text fontSize='18px' as='b'>{props.TextoFinal}</Text>
         </ContainerCarro>
         </>
     )

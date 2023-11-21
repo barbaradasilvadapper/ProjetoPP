@@ -12,9 +12,7 @@ import axios from "axios";
 function Resultado() {
   const id = localStorage.getItem("user");
   const selectedMonth = localStorage.getItem("selectedMonth"); // Obter o mês selecionado
-  const calculationResult = localStorage.getItem("calculationResult");
-  const realResult = calculationResult ? JSON.parse(calculationResult).data : null; // Agora 'realResult' conterá o valor real do resultado do cálculo
-
+  const totalEmitido = parseFloat(localStorage.getItem("totalEmitido")).toFixed(2);// Obter o resultado do cálculo
 
   const formData = {
     id: id,
@@ -96,7 +94,7 @@ function Resultado() {
             TextoNormal={user.nome}
             TextoNegrito={`Mês Selecionado: ${monthName}`} // Exibir o mês selecionado
             TextoAcima='Esse mês você emitiu'
-            NomeCarro={realResult} // Exibir o resultado do cálculo
+            NomeCarro={totalEmitido} // Exibir o resultado do cálculo
             TextoFinal="de gás carbônico"
           />
           <Link to="/Compensacao">

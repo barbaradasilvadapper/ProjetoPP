@@ -67,7 +67,7 @@ function Menu(props) {
 
                 <Container>
                 <Link to="/NovoCarro">
-                <Button colorScheme='green' size='sm' variant='ghost'>Novo Carro</Button>
+                <Button colorScheme='green' size='sm' variant='ghost'>Editar Carro</Button>
                 </Link>
                 <Divider/>
                 </Container>

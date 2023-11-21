@@ -13,20 +13,20 @@ function Estatistica(props) {
       <>
         <ContainerEstatistica>
         <StatGroup w='100vw' justifyContent='space-between'>
-            <Stat align='left' ml='7%'>
-                <StatNumber fontSize='18px' fontWeight='700'>
+            <Stat align='left' ml='9%'>
+                <StatNumber fontSize='22px' fontWeight='700'>
                 <StatArrow type='decrease'/>
-                {props.NEmitido}
+                {props.NEmitido}l
                 </StatNumber>
-                <StatLabel>Emitidos</StatLabel>
+                <StatLabel fontSize='18px'>Abastecidos</StatLabel>
             </Stat>
             
-            <Stat align='right' mr='7%'>
-                <StatNumber fontSize='18px' fontWeight='700'>
+            <Stat align='right' mr='9%'>
+                <StatNumber fontSize='22px' fontWeight='700'>
                 <StatArrow type='increase'/>
-                {props.NCompensado}
+                {props.NCompensado}kg
                 </StatNumber>
-                <StatLabel>Compensados</StatLabel>
+                <StatLabel fontSize='18px'>Compensados</StatLabel>
             </Stat>
         </StatGroup>
         </ContainerEstatistica>
