@@ -36,8 +36,7 @@ function Menu(props) {
     }, [navigate])
 
     const handleLogout = () =>{
-      localStorage.removeItem("token")
-      localStorage.removeItem("email")
+      localStorage.clear();
       navigate("/")
     }
 
@@ -66,13 +65,6 @@ function Menu(props) {
               <DrawerBody spacing={5} direction='column'>
 
                 <Container>
-                <Link to="/NovoCarro">
-                <Button colorScheme='green' size='sm' variant='ghost'>Editar Carro</Button>
-                </Link>
-                <Divider/>
-                </Container>
-
-                <Container>
                 <Link to="/NewPassword">
                 <Button colorScheme='green' size='sm' variant='ghost'>Redefinir Senha</Button>
                 </Link>
@@ -95,7 +87,7 @@ function Menu(props) {
               </DrawerBody>
 
               <DrawerFooter>
-                <Button size='md' variant='outline' mb={5} mr={4} as='b' onClick={handleLogout}>
+                <Button size='md' variant='outline' mb={5} mr={4} as='b' onClick={handleLogout} >
                   Logout
                 </Button>
               </DrawerFooter>

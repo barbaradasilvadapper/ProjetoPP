@@ -39,7 +39,8 @@ function CardCadastro(){
 
             if(response.data.success) {
                 alert('Usuario cadastrado')
-                navigate('/')
+                navigate('/NovoCarro')
+                localStorage.setItem('user', response.data.userId);
             } else {
                 alert('Não foi possivel cadastrar');
             }

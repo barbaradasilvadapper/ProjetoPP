@@ -35,8 +35,8 @@ function NovoCarro(){
 
             if(response.data.success) {
                 alert('Carro cadastrado')
-                localStorage.setItem('carro', response.data.data[0].carro)
-                navigate('/home')
+                localStorage.clear();
+                navigate('/')
             } else {
                 alert('Não foi possivel cadastrar');
             }

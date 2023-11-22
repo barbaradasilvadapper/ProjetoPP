@@ -88,7 +88,7 @@ function Resultado() {
 
   return (
     <>
-      {user && emissoes && compensacoes ? (
+      {user ? (
         <HomePageContainer>
           <HomeInfo
             TextoNormal={user.nome}
@@ -103,8 +103,8 @@ function Resultado() {
             />
           </Link>
           <Estatistica
-            NEmitido={emissoes}
-            NCompensado={compensacoes}
+            NEmitido= {emissoes ? emissoes : 0}
+            NCompensado= {compensacoes ? compensacoes : 0}
           />
           <Menu barra="3" />
         </HomePageContainer>

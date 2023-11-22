@@ -8,7 +8,7 @@ async function somaCompensacoes(request, response) {
     
     connection.query(query, values, (err, results) => {
         try {
-            if (results.length > 0) {
+            if (results !== undefined && results.length > 0) {
                 const totalQuantidade = results[0].total_quantidade;
                 response.status(200).json({
                     success: true,
@@ -16,16 +16,17 @@ async function somaCompensacoes(request, response) {
                     data: totalQuantidade
                 });
             } else {
+                const totalQuantidade = 0;
                 response.status(404).json({
                     success: false,
-                    message: `Usuário não encontrado ou sem dados de abastecimento`,
-                    error: err
+                    message: `Usuário não encontrado ou sem dados de compensações`,
+                    data: totalQuantidade
                 });
             }
         } catch (e) {
             response.status(500).json({
                 success: false,
-                message: "Ocorreu um erro ao buscar os dados de abastecimento.",
+                message: "Ocorreu um erro ao buscar os dados de compensações.",
                 error: e
             });
         }

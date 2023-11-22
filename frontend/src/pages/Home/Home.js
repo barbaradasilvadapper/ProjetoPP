@@ -67,7 +67,7 @@ function Home() {
 
   return (
     <>
-      {user && car  && emissoes && compensacoes ? (
+      {user && car ? (
         <HomePageContainer>
           <HomeInfo
             TextoNormal='Bem-vindo'
@@ -82,8 +82,8 @@ function Home() {
             />
           </Link>
           <Estatistica
-            NEmitido= {emissoes}
-            NCompensado={compensacoes}
+            NEmitido= {emissoes ? emissoes : 0}
+            NCompensado= {compensacoes ? compensacoes : 0}
           />
           <Menu barra="0" />
         </HomePageContainer>

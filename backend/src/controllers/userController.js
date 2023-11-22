@@ -36,22 +36,67 @@ async function listUsers(request, response) {
     });
 }
 
-// Função que cria um novo usuário 
+// // Função que cria um novo usuário 
+// async function storeUser(request, response) {
+//     const values = [
+//         request.body.nome,
+//         request.body.email,
+//         bcrypt.hashSync(request.body.senha, 3)
+//     ];
+// console.log(request.body)
+//     // Use placeholders na consulta SQL
+//     const query = "INSERT INTO usuarios (nome, email, senha) VALUES (?, ?, ?)";
+
+//     // Execute a ação no banco de dados e valide os retornos para o cliente que realizou a solicitação
+//     connection.query(query, values, (err, results) => {
+//         try {
+//             if (err) {
+//                 if (err.code === 'ER_DUP_ENTRY') { // Verifica o código de erro para violação de chave única
+//                     response.status(400).json({
+//                         success: false,
+//                         message: "O email já existe. Escolha outro email.",
+//                         query: query,
+//                         sqlMessage: err.sqlMessage
+//                     });
+//                 } else {
+//                     response.status(400).json({
+//                         success: false,
+//                         message: "Não foi possível realizar o cadastro. Verifique os dados informados",
+//                         query: query,
+//                         sqlMessage: err.sqlMessage
+//                     });
+//                 }
+//             } else {
+//                 response.status(201).json({
+//                     success: true,
+//                     message: "Sucesso! Usuário cadastrado.",
+//                     data: results
+//                 });
+//             }
+//         } catch (e) {
+//             response.status(400).json({
+//                 success: false,
+//                 message: "Ocorreu um erro. Não foi possível cadastrar o usuário!",
+//                 query: query,
+//                 sqlMessage: err.sqlMessage
+//             });
+//         }
+//     });
+// }
+
 async function storeUser(request, response) {
     const values = [
         request.body.nome,
         request.body.email,
         bcrypt.hashSync(request.body.senha, 3)
     ];
-console.log(request.body)
-    // Use placeholders na consulta SQL
-    const query = "INSERT INTO usuarios (nome, email, senha) VALUES (?, ?, ?)";
 
-    // Execute a ação no banco de dados e valide os retornos para o cliente que realizou a solicitação
+    const query = "INSERT INTO usuarios (nome, email, senha) VALUES (?, ?, ?)";
+    
     connection.query(query, values, (err, results) => {
         try {
             if (err) {
-                if (err.code === 'ER_DUP_ENTRY') { // Verifica o código de erro para violação de chave única
+                if (err.code === 'ER_DUP_ENTRY') {
                     response.status(400).json({
                         success: false,
                         message: "O email já existe. Escolha outro email.",
@@ -67,9 +112,12 @@ console.log(request.body)
                     });
                 }
             } else {
+                const userId = results.insertId; // Obtém o ID do usuário recém-cadastrado
+
                 response.status(201).json({
                     success: true,
                     message: "Sucesso! Usuário cadastrado.",
+                    userId: userId, // Inclui o ID do usuário na resposta
                     data: results
                 });
             }
@@ -87,17 +135,16 @@ console.log(request.body)
 
 // Função que atualiza o usuário no banco
 async function updateUser(request, response) {
+    const values = [
+        request.body.email,
+        bcrypt.hashSync(request.body.senha, 3)
+    ];
+console.log(request.body)
     // Preparar o comando de execução no banco
-    const query = "UPDATE usuarios SET `senha` = ? WHERE `id` = ?";
-
-    // Recuperar os dados enviados na requisição respectivamente
-    const params = Array(
-        bcrypt.hashSync(request.body.senha, 10),        
-        request.params.id  // Recebimento de parametro da rota
-    );
+    const query = "UPDATE usuarios SET `senha` = ? WHERE `email` = ?";
 
     // Executa a ação no banco e valida os retornos para o client que realizou a solicitação
-    connection.query(query, params, (err, results) => {
+    connection.query(query, values, (err, results) => {
         try {
             if (results) {
                 response
