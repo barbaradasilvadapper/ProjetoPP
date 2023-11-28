@@ -49,7 +49,7 @@ function Resultado() {
     }
   }
   
-  const monthName = getMonthName(selectedMonth); // Retorna 'Março'
+  const monthName = getMonthName(selectedMonth); // Retorna o nome do mês
 
   
   const [user, setUser] = useState();
@@ -94,7 +94,7 @@ function Resultado() {
             TextoNormal={user.nome}
             TextoNegrito={`Mês Selecionado: ${monthName}`} // Exibir o mês selecionado
             TextoAcima='Esse mês você emitiu'
-            NomeCarro={totalEmitido} // Exibir o resultado do cálculo
+            NomeCarro={`${totalEmitido}kg`} // Exibir o resultado do cálculo
             TextoFinal="de gás carbônico"
           />
           <Link to="/Compensacao">
@@ -103,7 +103,7 @@ function Resultado() {
             />
           </Link>
           <Estatistica
-            NEmitido= {emissoes ? emissoes : 0}
+            NEmitido= {emissoes ? emissoes.toFixed(0) : 0}
             NCompensado= {compensacoes ? compensacoes : 0}
           />
           <Menu barra="3" />

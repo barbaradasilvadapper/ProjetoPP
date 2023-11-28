@@ -7,14 +7,14 @@ import {
 } from '@chakra-ui/react'
 
 import { Input } from '@chakra-ui/react'
-import { EmailIcon, LockIcon, PhoneIcon } from '@chakra-ui/icons'
+import { EmailIcon, LockIcon } from '@chakra-ui/icons'
 import { Button } from '@chakra-ui/react'
 import { Text } from '@chakra-ui/react'
 
 import { BsFillPersonFill } from "react-icons/bs";
 import { Link } from "react-router-dom"
 
-import { useState, useEffect, useToast } from "react"
+import { useState } from "react"
 import { useNavigate } from "react-router-dom";
 import { baseUrl } from "../../services/api";
 import axios from "axios";
@@ -22,9 +22,10 @@ import axios from "axios";
 
 function CardCadastro(){
     const navigate = useNavigate();
+    const id = localStorage.getItem("user")
+
     const [formData, setFormData] = useState({
-        nome: "",
-        email: "",
+        id: id,
         senha: "",
         confirmSenha: ""
     });
@@ -33,27 +34,30 @@ function CardCadastro(){
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        if(formData.senha !== formData.confirmSenha){
-            alert("Senhas não coincidem")
-        } else{
-            const response = await axios.post(`${baseUrl}/user/update`, formData);
-
-            if(response.data.success) {
-                alert('Senha atualizada')
-                navigate('/')
+        if (formData.senha !== formData.confirmSenha) {
+            alert("Senhas não coincidem");
+        } else {
+            const email = document.getElementById('email').value; // Capturando o email do input
+    
+            const response = await axios.put(`${baseUrl}/user/update`, {
+                email: email,
+                senha: formData.senha
+            });
+    
+            if (response.data.success) {
+                alert('Senha atualizada');
+                navigate('/');
             } else {
-                alert('Não foi possivel atualizar a senha');
+                alert('Não foi possível atualizar a senha');
             }
-              
         }
-
+    
         setFormData({
-            nome: "",
-            email: "",
             senha: "",
             confirmSenha: ""
         });
     }
+    
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -81,8 +85,6 @@ function CardCadastro(){
             <Input type='username' size='md' variant='filled' fontSize='15px' placeholder='Nome de Usuário' 
             id="nome"
             name="nome"
-            value={formData.nome}
-            onChange={handleChange}
             required/>
             </InputGroup>
             </StyleInput>
@@ -95,8 +97,6 @@ function CardCadastro(){
             <Input type='email' size='md' variant='filled' fontSize='15px' placeholder='Email' 
             id="email"
             name="email"
-            value={formData.email}
-            onChange={handleChange}
             required/>
             </InputGroup>
             </StyleInput>

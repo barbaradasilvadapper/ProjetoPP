@@ -20,7 +20,7 @@ const {
 // Criar os endpoints (rotas) que serão acessados a partir dos métodos HTTP (get,post,put,delete)
 router.get('/users', listUsers);
 router.post('/user/create', storeUser);
-router.post('/user/update', updateUser);
+router.put('/user/update', updateUser);
 router.delete('/user/:id', deleteUser);
 
 module.exports = router;

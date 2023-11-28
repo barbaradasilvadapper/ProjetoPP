@@ -16,9 +16,9 @@ function Estatistica(props) {
             <Stat align='left' ml='9%'>
                 <StatNumber fontSize='22px' fontWeight='700'>
                 <StatArrow type='decrease'/>
-                {props.NEmitido}l
+                {props.NEmitido}kg
                 </StatNumber>
-                <StatLabel fontSize='18px'>Abastecidos</StatLabel>
+                <StatLabel fontSize='18px'>Emitidos</StatLabel>
             </Stat>
             
             <Stat align='right' mr='9%'>

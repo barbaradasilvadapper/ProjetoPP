@@ -36,54 +36,8 @@ async function listUsers(request, response) {
     });
 }
 
-// // Função que cria um novo usuário 
-// async function storeUser(request, response) {
-//     const values = [
-//         request.body.nome,
-//         request.body.email,
-//         bcrypt.hashSync(request.body.senha, 3)
-//     ];
-// console.log(request.body)
-//     // Use placeholders na consulta SQL
-//     const query = "INSERT INTO usuarios (nome, email, senha) VALUES (?, ?, ?)";
 
-//     // Execute a ação no banco de dados e valide os retornos para o cliente que realizou a solicitação
-//     connection.query(query, values, (err, results) => {
-//         try {
-//             if (err) {
-//                 if (err.code === 'ER_DUP_ENTRY') { // Verifica o código de erro para violação de chave única
-//                     response.status(400).json({
-//                         success: false,
-//                         message: "O email já existe. Escolha outro email.",
-//                         query: query,
-//                         sqlMessage: err.sqlMessage
-//                     });
-//                 } else {
-//                     response.status(400).json({
-//                         success: false,
-//                         message: "Não foi possível realizar o cadastro. Verifique os dados informados",
-//                         query: query,
-//                         sqlMessage: err.sqlMessage
-//                     });
-//                 }
-//             } else {
-//                 response.status(201).json({
-//                     success: true,
-//                     message: "Sucesso! Usuário cadastrado.",
-//                     data: results
-//                 });
-//             }
-//         } catch (e) {
-//             response.status(400).json({
-//                 success: false,
-//                 message: "Ocorreu um erro. Não foi possível cadastrar o usuário!",
-//                 query: query,
-//                 sqlMessage: err.sqlMessage
-//             });
-//         }
-//     });
-// }
-
+//Função que cria novo usuario
 async function storeUser(request, response) {
     const values = [
         request.body.nome,
@@ -135,45 +89,38 @@ async function storeUser(request, response) {
 
 // Função que atualiza o usuário no banco
 async function updateUser(request, response) {
-    const values = [
-        request.body.email,
-        bcrypt.hashSync(request.body.senha, 3)
-    ];
-console.log(request.body)
-    // Preparar o comando de execução no banco
+    const { email, senha } = request.body;
+
+    const hashedPassword = bcrypt.hashSync(senha, 3);
+
     const query = "UPDATE usuarios SET `senha` = ? WHERE `email` = ?";
 
-    // Executa a ação no banco e valida os retornos para o client que realizou a solicitação
-    connection.query(query, values, (err, results) => {
+    connection.query(query, [hashedPassword, email], (err, results) => {
         try {
-            if (results) {
-                response
-                    .status(200)
-                    .json({
-                        success: true,
-                        message: `Sucesso! Senha atualizada.`,
-                        data: results
-                    });
+            if (results.affectedRows > 0) {
+                response.status(200).json({
+                    success: true,
+                    message: `Senha atualizada com sucesso.`,
+                    data: results
+                });
             } else {
-                response
-                    .status(400)
-                    .json({
-                        success: false,
-                        message: `Não foi possível realizar a atualização. Verifique os dados informados`,
-                        query: err.sql,
-                        sqlMessage: err.sqlMessage
-                    });
-            }
-        } catch (e) { // Caso aconteça algum erro na execução
-            response.status(400).json({
-                    succes: false,
-                    message: "Ocorreu um erro. Não foi possível atualizar usuário!",
+                response.status(400).json({
+                    success: false,
+                    message: `Não foi possível realizar a atualização. Verifique os dados informados.`,
                     query: err.sql,
                     sqlMessage: err.sqlMessage
                 });
+            }
+        } catch (e) {
+            response.status(500).json({
+                success: false,
+                message: "Ocorreu um erro ao atualizar a senha.",
+                error: e
+            });
         }
     });
 }
+
 
 // Função que remove usuário no banco
 async function deleteUser(request, response) {

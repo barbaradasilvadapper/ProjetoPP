@@ -82,7 +82,7 @@ function Home() {
             />
           </Link>
           <Estatistica
-            NEmitido= {emissoes ? emissoes : 0}
+            NEmitido= {emissoes ? emissoes.toFixed(0) : 0}
             NCompensado= {compensacoes ? compensacoes : 0}
           />
           <Menu barra="0" />
